@@ -1,19 +1,17 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
-import PageDefault from "../../../components/PageDefault";
-import FormField from "../../../components/FormField";
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import PageDefault from '../../../components/PageDefault';
+import FormField from '../../../components/FormField';
 
 function CadastroCategoria() {
   const valoresIniciais = {
-    nome: "",
-    descricao: "",
-    cor: "",
+    nome: '',
+    descricao: '',
+    cor: '',
   };
   const [categorias, setCategorias] = useState([]);
   const [values, setvalues] = useState(valoresIniciais);
-  const [nomeDaCategoria, setNomeDaCategoria] = useState("Filmes");
-
-  
+  //const [nomeDaCategoria, setNomeDaCategoria] = useState('Filmes');
 
   function setValue(chave, valor) {
     console.log(chave);
@@ -32,38 +30,41 @@ function CadastroCategoria() {
   }
 
   function handleChange(infosDoEvento) {
-    const name = infosDoEvento.target.getAttribute("name");
+    const name = infosDoEvento.target.getAttribute('name');
     const { value } = infosDoEvento.target;
 
     setValue(name, value);
-
-    
   }
 
   return (
     <PageDefault>
-      <h1>Cadastro de Categoria : {values.nome}</h1>
+      <h1>
+        Cadastro de Categoria :
+        {values.nome}
+      </h1>
 
       <form onSubmit={handleSubmit}>
-       
-        <FormField label='Nome da categoria'
-         value={values.nome} 
-         name='nome'
-         handleChange={handleChange} 
-         />
-        <FormField 
-         tag='textarea' 
-         label='Descricao'
-         name='descricao'
-         value={values.descricao}
-         handleChange={handleChange} />
-        
-        <FormField 
-        label='Cor'
-        type='color'
-        name='cor'
-        value={values.cor}
-         handleChange={handleChange} />
+        <FormField
+          label="Nome da categoria"
+          value={values.nome}
+          name="nome"
+          handleChange={handleChange}
+        />
+        <FormField
+          tag="textarea"
+          label="Descricao"
+          name="descricao"
+          value={values.descricao}
+          handleChange={handleChange}
+        />
+
+        <FormField
+          label="Cor"
+          type="color"
+          name="cor"
+          value={values.cor}
+          handleChange={handleChange}
+        />
         <button>Cadastrar</button>
       </form>
 
