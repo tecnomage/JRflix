@@ -15,9 +15,6 @@ function CadastroCategoria() {
   // const [nomeDaCategoria, setNomeDaCategoria] = useState('Filmes');
 
   function setValue(chave, valor) {
-    console.log(chave);
-    console.log(valor);
-
     setvalues({
       ...values,
       [chave]: valor,
@@ -39,7 +36,19 @@ function CadastroCategoria() {
 
   useEffect(() => {
     console.log('shoooooooooow');
-  });
+    const URL_TOP = 'http://localhost:8080/categorias';
+    // fetch(URL_TOP)
+    //   .then((respostaDoServidor) => respostaDoServidor.json())
+    //   .then((dados) => setCategorias([...dados]));
+
+    fetch(URL_TOP)
+      .then(async (respostaDoServidor) => {
+        const resposta = await respostaDoServidor.json();
+        setCategorias([
+          ...resposta,
+        ]);
+      });
+  }, []);
 
   return (
     <PageDefault>
