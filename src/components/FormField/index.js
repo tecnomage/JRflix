@@ -54,14 +54,12 @@ const Input = styled.input`
   &:focus:not([type='color']) + ${Label.Text} {
     transform: scale(.6) translateY(-10px);
   }
-  ${({ value }) => {
-    const hasValue = value.length > 0;
-    return hasValue && css`
+  ${({ hasValue }) => hasValue && css`
         &:not([type='color']) + ${Label.Text} {
           transform: scale(.6) translateY(-10px);
         }
-    `;
-  }}
+    `
+}
 `;
 
 function FormField({
@@ -70,12 +68,11 @@ function FormField({
   const fieldId = `id_${name};`;
   const isTypedTextArea = type === 'textarea';
   const tag = isTypedTextArea ? 'textarea' : 'input';
-  console.log(tag);
-  console.log(isTypedTextArea);
+
   return (
     <FormFieldWrapper>
       <Label htmlFor={fieldId}>
-        
+
         <Input
           as={tag}
           type={type}
@@ -97,6 +94,7 @@ export default FormField;
 FormField.defaultProps = {
   type: 'text',
   value: 'text',
+  tag:'text',
 };
 
 FormField.propTypes = {
@@ -105,5 +103,5 @@ FormField.propTypes = {
   name: PropTypes.string.isRequired,
   value: PropTypes.string,
   handleChange: PropTypes.string.isRequired,
-  tag: PropTypes.string.isRequired,
+  tag: PropTypes.string,
 };
