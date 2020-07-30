@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import PageDefault from '../../../components/PageDefault';
 import FormField from '../../../components/FormField';
+import Button from '../../../components/Button';
 
 function CadastroCategoria() {
   const valoresIniciais = {
@@ -11,7 +12,7 @@ function CadastroCategoria() {
   };
   const [categorias, setCategorias] = useState([]);
   const [values, setvalues] = useState(valoresIniciais);
-  //const [nomeDaCategoria, setNomeDaCategoria] = useState('Filmes');
+  // const [nomeDaCategoria, setNomeDaCategoria] = useState('Filmes');
 
   function setValue(chave, valor) {
     console.log(chave);
@@ -46,12 +47,13 @@ function CadastroCategoria() {
       <form onSubmit={handleSubmit}>
         <FormField
           label="Nome da categoria"
+          type="input"
           value={values.nome}
           name="nome"
           handleChange={handleChange}
         />
         <FormField
-          tag="textarea"
+          type="textarea"
           label="Descricao"
           name="descricao"
           value={values.descricao}
@@ -65,7 +67,7 @@ function CadastroCategoria() {
           value={values.cor}
           handleChange={handleChange}
         />
-        <button>Cadastrar</button>
+        <Button>Cadastrar</Button>
       </form>
 
       <ul>
