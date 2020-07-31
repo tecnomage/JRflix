@@ -36,14 +36,17 @@ function CadastroCategoria() {
 
   useEffect(() => {
     console.log('shoooooooooow');
-    const URL_TOP = 'http://localhost:8080/categorias';
+    //const URL_TOP = 'https://jrflix.herokuapp.com/categorias';
     // fetch(URL_TOP)
     //   .then((respostaDoServidor) => respostaDoServidor.json())
     //   .then((dados) => setCategorias([...dados]));
 
+    const URL_TOP = 'http://localhost:8080/categorias';
     fetch(URL_TOP)
       .then(async (respostaDoServidor) => {
+
         const resposta = await respostaDoServidor.json();
+
         setCategorias([
           ...resposta,
         ]);
@@ -85,8 +88,8 @@ function CadastroCategoria() {
       {categorias.length === 0 && (<div>Loading.....</div>)}
       <ul>
         {categorias.map((categoria, i) => {
-          console.log(categoria);
-          return <li key={i}>{categoria.nome}</li>;
+          
+          return <li key={i}>{categoria.titulo}</li>;
         })}
       </ul>
 
