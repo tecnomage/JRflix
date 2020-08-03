@@ -1,7 +1,7 @@
 import React from 'react';
-import Menu from '../Menu'
-import Footer from '../Footer'
 import styled from 'styled-components';
+import Menu from '../Menu';
+import Footer from '../Footer';
 
 const Main = styled.main`
         background-color: var(--black);
@@ -11,21 +11,18 @@ const Main = styled.main`
         padding-left: 5%;
         padding-right:5%;
 
-`
+`;
 
-
-function PageDefault({children})
-{
-return (
-    <React.Fragment>
-        <Menu/>
-        <Main>
+function PageDefault({ children }) {
+  return (
+    <>
+      <Menu />
+      <Main>
         {children}
-        </Main>
-        <Footer/>
-    </React.Fragment>
-    )   
-
+      </Main>
+      <Footer />
+    </>
+  );
 }
 
-export default PageDefault
+export default PageDefault;

@@ -12,7 +12,7 @@ function useForm(valoresIniciais) {
   function handleChange(infosDoEvento) {
     const name = infosDoEvento.target.getAttribute('name');
     const { value } = infosDoEvento.target;
-    console.log(name +'  ' +value);
+    console.log(`${name }  ${ value}`);
 
     setValue(name, value);
   }
