@@ -3,36 +3,7 @@ import { Link } from 'react-router-dom';
 import PageDefault from '../../../components/PageDefault';
 import FormField from '../../../components/FormField';
 import Button from '../../../components/Button';
-
-
-function UseForm(valoresIniciais) {
-  const [values, setvalues] = useState(valoresIniciais);
-
-  function setValue(chave, valor) {
-    console.log('setValues');
-    setvalues({
-      ...values,
-      [chave]: valor,
-    });
-  }
-  function handleChange(infosDoEvento) {
-    const name = infosDoEvento.target.getAttribute('name');
-    const { value } = infosDoEvento.target;
-    console.log('handleChange');
-    setValue(name, value);
-  }
-
-  function clearForm() {
-    setvalues(valoresIniciais);
-    console.log('clear');
-  }
-
-  return {
-    values,
-    handleChange,
-    clearForm,
-  };
-}
+import UseForm from '../../../hooks/useForm'
 
 function CadastroCategoria() {
   const valoresIniciais = {
