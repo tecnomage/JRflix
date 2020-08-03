@@ -1,1 +1,6 @@
-Pegar os estilos do fiddle
+cadastro categoria 
+
+fazer o custom hooks
+
+
+https://youtu.be/hhQ3RtvmfEg?t=773

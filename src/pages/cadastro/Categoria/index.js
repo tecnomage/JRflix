@@ -4,29 +4,16 @@ import PageDefault from '../../../components/PageDefault';
 import FormField from '../../../components/FormField';
 import Button from '../../../components/Button';
 
-function CadastroCategoria() {
-  const valoresIniciais = {
-    nome: '',
-    descricao: '',
-    cor: '',
-  };
-  const [categorias, setCategorias] = useState([]);
-  const [values, setvalues] = useState(valoresIniciais);
-  // const [nomeDaCategoria, setNomeDaCategoria] = useState('Filmes');
 
+function UseForm(valoresIniciais) {
+  const [values, setvalues] = useState(valoresIniciais);
+  
   function setValue(chave, valor) {
     setvalues({
       ...values,
       [chave]: valor,
     });
   }
-
-  function handleSubmit(infosDoEvento) {
-    infosDoEvento.preventDefault();
-    setCategorias([...categorias, values]);
-    setvalues(valoresIniciais);
-  }
-
   function handleChange(infosDoEvento) {
     const name = infosDoEvento.target.getAttribute('name');
     const { value } = infosDoEvento.target;
@@ -34,17 +21,54 @@ function CadastroCategoria() {
     setValue(name, value);
   }
 
+  function clearForm() {
+    setvalues(valoresIniciais);
+
+  }
+
+  return {
+    values,
+    handleChange,
+    clearForm
+  };
+}
+
+function CadastroCategoria() {
+  const valoresIniciais = {
+    nome: '',
+    descricao: '',
+    cor: '',
+  };
+  const [categorias, setCategorias] = useState([]);
+
+  // const [nomeDaCategoria, setNomeDaCategoria] = useState('Filmes');
+
+  const { handleChange, values, clearForm } = UseForm(valoresIniciais);
+
+  // function setValue(chave, valor) {
+  //   setvalues({
+  //     ...values,
+  //     [chave]: valor,
+  //   });
+  // }
+
+  function handleSubmit(infosDoEvento) {
+    infosDoEvento.preventDefault();
+    setCategorias([...categorias, values]);
+    
+    clearForm();
+  }
+
   useEffect(() => {
-    console.log('shoooooooooow');
-    //const URL_TOP = 'https://jrflix.herokuapp.com/categorias';
+    // const URL_TOP = 'https://jrflix.herokuapp.com/categorias';
     // fetch(URL_TOP)
     //   .then((respostaDoServidor) => respostaDoServidor.json())
     //   .then((dados) => setCategorias([...dados]));
 
-    const URL_TOP = 'http://localhost:8080/categorias';
+    //const URL_TOP = 'http://localhost:8080/categorias';
+    const URL_TOP = 'https://jrflix.herokuapp.com/categorias';
     fetch(URL_TOP)
       .then(async (respostaDoServidor) => {
-
         const resposta = await respostaDoServidor.json();
 
         setCategorias([
@@ -87,10 +111,7 @@ function CadastroCategoria() {
       </form>
       {categorias.length === 0 && (<div>Loading.....</div>)}
       <ul>
-        {categorias.map((categoria, i) => {
-          
-          return <li key={i}>{categoria.titulo}</li>;
-        })}
+        {categorias.map((categoria, i) => <li key={i}>{categoria.titulo}</li>)}
       </ul>
 
       <Link to="/">Ir para home</Link>
