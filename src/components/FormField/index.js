@@ -94,7 +94,7 @@ export default FormField;
 FormField.defaultProps = {
   type: 'text',
   value: 'text',
-  tag:'text',
+  tag: 'text',
 };
 
 FormField.propTypes = {

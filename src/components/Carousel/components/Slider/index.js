@@ -50,6 +50,7 @@ const Slider = ({ children }) => (
       adaptiveHeight: true,
     }}
     >
+
       {children}
     </SlickSlider>
   </Container>

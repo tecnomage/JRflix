@@ -5,6 +5,7 @@ const URL_CATEGORIES = `${config.URL_BACKEND_TOP}/categorias`;
 function getWithVideos() {
   return fetch(`${URL_CATEGORIES}?_embed=videos`).then(async (respostaDoServidor) => {
     if (respostaDoServidor.ok) {
+        console.log('servidor ok');
       const resposta = await respostaDoServidor.json();
       return resposta;
     }
