@@ -42,9 +42,10 @@ const CadastroVideo = () => {
     });
   };
   useEffect(() => {
-    categoriasRepository.getAll().then((resposta) => {
-      setCategorias([...resposta]);
-    });
+    console.log(categoriasRepository.getAll);
+    // categoriasRepository.getAll().then((resposta) => {
+    //   setCategorias([...resposta]);
+    // });
   }, []);
   return (
     <PageDefault>

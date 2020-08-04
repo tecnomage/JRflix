@@ -63,7 +63,7 @@ const Input = styled.input`
 `;
 
 function FormField({
-  label, name, value, handleChange, type,
+  label, name, value, handleChange, type, suggestions,
 }) {
   const fieldId = `id_${name};`;
   const isTypedTextArea = type === 'textarea';
@@ -79,11 +79,20 @@ function FormField({
           value={value}
           name={name}
           onChange={handleChange}
+          list={`suggestionFor_${fieldId}`}
         />
         <Label.Text>
           {`${label} `}
           :
         </Label.Text>
+        <datalist id={`suggestionFor_${fieldId}`}>
+          {suggestions.map((suggestion) => {
+            // eslint-disable-next-line no-unused-expressions
+            <option value={suggestion}>
+            {suggestion}
+            </option>;
+          })}
+        </datalist>
       </Label>
     </FormFieldWrapper>
   );
@@ -95,6 +104,10 @@ FormField.defaultProps = {
   type: 'text',
   value: 'text',
   tag: 'text',
+  suggestions: [
+    'Front End',
+    'Back-end,',
+  ],
 };
 
 FormField.propTypes = {
@@ -104,4 +117,5 @@ FormField.propTypes = {
   value: PropTypes.string,
   handleChange: PropTypes.string.isRequired,
   tag: PropTypes.string,
+  suggestions: PropTypes.arrayOf(PropTypes.string),
 };

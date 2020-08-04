@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import PageDefault from '../../../components/PageDefault';
 import FormField from '../../../components/FormField';
 import Button from '../../../components/Button';
-import UseForm from '../../../hooks/useForm'
+import UseForm from '../../../hooks/useForm';
 
 function CadastroCategoria() {
   const valoresIniciais = {
@@ -32,11 +32,6 @@ function CadastroCategoria() {
   }
 
   useEffect(() => {
-    // const URL_TOP = 'https://jrflix.herokuapp.com/categorias';
-    // fetch(URL_TOP)
-    //   .then((respostaDoServidor) => respostaDoServidor.json())
-    //   .then((dados) => setCategorias([...dados]));
-
     const URL_TOP = 'http://localhost:8080/categorias';
     // const URL_TOP = 'https://jrflix.herokuapp.com/categorias';
     fetch(URL_TOP)
@@ -83,9 +78,9 @@ function CadastroCategoria() {
       </form>
       {categorias.length === 0 && (<div>Loading.....</div>)}
       <ul>
-  {categorias.map((categoria, i) => {
-  //console.log(categoria)
-  return <li key={i}>{categoria.titulo}</li>})}
+        {categorias.map((categoria, i) =>
+        // console.log(categoria)
+          <li key={i}>{categoria.titulo}</li>)}
       </ul>
 
       <Link to="/">Ir para home</Link>
